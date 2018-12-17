@@ -1,2 +1,5 @@
 # vagrant-dev
-Vagrantfile's first push
+
+Custom Vagrantfiles for dev environment.
+
+Configurations based on Centos 7.
