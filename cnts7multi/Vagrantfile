@@ -1,0 +1,56 @@
+Vagrant.configure("2") do |config|
+
+	config.vm.box = "centos/7"
+  
+	config.vm.provider "virtualbox" do |vb|
+		vb.memory = "1024"
+	end
+
+	config.vm.provision "shell", inline: <<-SHELL
+		sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+		systemctl restart sshd
+	SHELL
+
+	
+	config.vm.define "wt1" do |wt|
+		wt.vm.network "private_network", ip: "192.168.33.91"
+		wt.vm.hostname = "wt1"
+	end
+
+	config.vm.define "wt2" do |wt|
+		wt.vm.network "private_network", ip: "192.168.33.92"
+		wt.vm.hostname = "wt2"
+	end
+
+	config.vm.define "wt3" do |wt|
+		wt.vm.network "private_network", ip: "192.168.33.93"
+		wt.vm.hostname = "wt3"
+	end
+	
+	config.vm.define "wt4" do |wt|
+		wt.vm.network "private_network", ip: "192.168.33.94"
+		wt.vm.hostname = "wt4"
+	end
+
+	config.vm.define "wt5" do |wt|
+		wt.vm.network "private_network", ip: "192.168.33.95"
+		wt.vm.hostname = "wt5"
+	end
+
+	config.vm.define "wt6" do |wt|
+		wt.vm.network "private_network", ip: "192.168.33.96"
+		wt.vm.hostname = "wt6"
+	end
+
+	config.vm.define "wt7" do |wt|
+		wt.vm.network "private_network", ip: "192.168.33.97"
+		wt.vm.hostname = "wt7"
+	end
+
+	config.vm.define "wt8" do |wt|
+		wt.vm.network "private_network", ip: "192.168.33.98"
+		wt.vm.hostname = "wt8"
+	end
+
+	
+end

@@ -1,0 +1,25 @@
+Vagrant.configure("2") do |config|
+
+	config.vm.box = "centos/7"
+  
+	config.vm.provider "virtualbox" do |vb|
+		vb.memory = "1024"
+	end
+
+	config.vm.provision "shell", inline: <<-SHELL
+		sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+		systemctl restart sshd
+	SHELL
+
+	
+	config.vm.define "wr0" do |wr|
+		wr.vm.network "private_network", ip: "192.168.33.90"
+		wr.vm.hostname = "wr1"
+	end
+
+	config.vm.define "wr2" do |wr|
+		wr.vm.network "private_network", ip: "192.168.33.92"
+		wr.vm.hostname = "wr2"
+	end
+	
+end
