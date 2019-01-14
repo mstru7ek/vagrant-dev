@@ -1,6 +1,6 @@
 # vagrant-dev
 
-Custom Vagrantfiles for dev environment.
+Custom Vagrant files for dev environment.
 
 Configurations based on Centos 7.
 
